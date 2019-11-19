@@ -1,11 +1,9 @@
 import React from "react";
 
-function Button(props) {
-  return (
-    <button type="button" className="button-add">
-      {props.button}
-    </button>
-  );
-}
+const Button = props => (
+  <button type="button" className="button-add">
+    {props.button}
+  </button>
+);
 
 export default Button;
