@@ -6,7 +6,7 @@ class MainForm extends React.Component {
   state = { text: "", date: "" };
 
   onChange = event => {
-    let { id, value } = event.target;
+    const { id, value } = event.target;
     this.setState({ [id]: value });
   };
 
