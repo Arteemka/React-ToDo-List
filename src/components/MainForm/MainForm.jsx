@@ -3,7 +3,7 @@ import uuid from "uuid";
 
 import Input from "../Input/Input";
 import Button from "../Button/Button";
-import OutputItems from "../outputItemOnPage/Output";
+import OutputItems from "../OutputItemOnPage/Output";
 
 class MainForm extends React.Component {
   state = { text: "", date: "", list: [] };
