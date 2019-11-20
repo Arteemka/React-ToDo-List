@@ -2,11 +2,11 @@ import React from "react";
 
 class Output extends React.Component {
   componentDidMount() {
-    document.addEventListener("click", this.toogleItemCheck, false);
+    document.addEventListener("click", this.toggleItemCheckStatus, false);
   }
 
-  toogleItemCheck = event => {
-    return event.target.parentNode.className === "output-item"
+  toggleItemCheckStatus = event => {
+    event.target.parentNode.className === "output-item"
       ? event.target.parentNode.classList.add("checked")
       : event.target.parentNode.classList.remove("checked");
   };
