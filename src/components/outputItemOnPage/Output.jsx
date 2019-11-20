@@ -1,7 +1,6 @@
 import React from "react";
 
-const Output = props => {
-  return (
+const Output = props => (
     <div className="output-title">
       <div className="output-item-title">
         <div className="output-item__title text-title">Поставленные задачи</div>
@@ -14,7 +13,7 @@ const Output = props => {
         </div>
       ))}
     </div>
-  );
-};
+
+);
 
 export default Output;
