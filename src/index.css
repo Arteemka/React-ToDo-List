@@ -63,19 +63,19 @@ code {
   font-size: 17px;
 }
 
-.flex-container-title,
-.flex-container-info {
+.output-item-title,
+.output-item {
   display: flex;
   margin-left: 450px;
   width: 700px;
 }
 
-.flex-container-info {
+.output-item {
   cursor: pointer;
 }
 
-.flex-item,
-.flex-item-info {
+.output-item__title,
+.output-item__info {
   flex-grow: 1;
   padding-left: 10px;
   width: 1px;
@@ -91,24 +91,24 @@ code {
   color: #fff;
 }
 
-.flex-item:nth-child(1) {
+.text-title {
   flex-grow: 10;
 }
 
-.flex-item:nth-child(2) {
+.date-title {
   flex-grow: 5;
 }
 
-.flex-item-info:nth-child(1) {
+.text {
   flex-grow: 10;
   text-align: left;
 }
 
-.flex-item-info:nth-child(2) {
+.date {
   flex-grow: 5;
 }
 
-.output-on-page {
+.output-title {
   position: relative;
   margin-top: -400px;
 }
