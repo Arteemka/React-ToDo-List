@@ -1,11 +1,11 @@
 import React from "react";
 
 class Output extends React.Component {
-  componentDidUpdate() {
-    document.addEventListener("click", this.deletion, false);
+  componentDidMount() {
+    document.addEventListener("click", this.toogleItemCheck, false);
   }
 
-  deletion = event => {
+  toogleItemCheck = event => {
     return event.target.parentNode.className === "output-item"
       ? event.target.parentNode.classList.add("checked")
       : event.target.parentNode.classList.remove("checked");
