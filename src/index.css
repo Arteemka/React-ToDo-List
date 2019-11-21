@@ -114,13 +114,13 @@ code {
   margin-top: -400px;
 }
 
-.output-item.checked .text {
+.date.checked {
   background: #acf151;
   color: #333;
   text-decoration: line-through;
 }
 
-.output-item.checked .date {
+.text.checked {
   background: #acf151;
   color: #333;
   text-decoration: line-through;

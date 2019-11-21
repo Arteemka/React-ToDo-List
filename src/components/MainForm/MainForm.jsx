@@ -19,12 +19,36 @@ class MainForm extends React.Component {
       return {
         list: [
           ...prevState.list,
-          { id: uuid.v4(), text: prevState.text, date: prevState.date }
+          {
+            id: uuid.v4(),
+            text: prevState.text,
+            date: prevState.date,
+            check: false
+          }
         ],
         text: "",
         date: ""
       };
     });
+  };
+
+  deleteItem = (event, id) => {
+    event.stopPropagation();
+    let newList = this.state.list.filter(function(num) {
+      return num.id !== id;
+    });
+    
+    this.setState({ list: newList });
+  };
+
+  toggleItemCheck = id => {
+    let items = this.state.list.map(num => {
+      return num;
+    });
+    let status = items.find(item => item.id === id);
+
+    status.check = !status.check;
+    this.setState({ list: items });
   };
 
   render() {
@@ -36,7 +60,11 @@ class MainForm extends React.Component {
           <Input id="date" type="date" onChange={this.onChange} />
           <Button button="Добавить" listChange={this.listChange} />
         </div>
-        <OutputItems lists={this.state.list} />
+        <OutputItems
+          lists={this.state.list}
+          deleteItem={this.deleteItem}
+          toggleItemCheck={this.toggleItemCheck}
+        />
       </>
     );
   }
