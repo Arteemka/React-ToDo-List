@@ -34,21 +34,23 @@ class MainForm extends React.Component {
 
   deleteItem = (event, id) => {
     event.stopPropagation();
-    let newList = this.state.list.filter(function(num) {
-      return num.id !== id;
+
+    this.setState({
+      list: this.state.list.filter(num => {
+        return num.id !== id;
+      })
     });
-    
-    this.setState({ list: newList });
   };
 
   toggleItemCheck = id => {
-    let items = this.state.list.map(num => {
-      return num;
-    });
-    let status = items.find(item => item.id === id);
-
-    status.check = !status.check;
-    this.setState({ list: items });
+    this.setState(state => ({
+      list: state.list.map(item => {
+        if (item.id === id) {
+          return { ...item, check: !item.check };
+        }
+        return item;
+      })
+    }));
   };
 
   render() {

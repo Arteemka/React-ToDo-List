@@ -2,15 +2,6 @@ import React from "react";
 
 class Output extends React.Component {
   render() {
-    const nameclasstext = ["output-item__info text"];
-    const nameclassdate = ["output-item__info date"];
-    this.props.lists.forEach(item => {
-      if (item.check === true) {
-        nameclasstext.push("checked");
-        nameclassdate.push("checked");
-      }
-    });
-
     return (
       <div className="output-title">
         <div className="output-item-title">
@@ -26,8 +17,24 @@ class Output extends React.Component {
             className="output-item"
             onClick={() => this.props.toggleItemCheck(item.id)}
           >
-            <div className={nameclasstext.join(" ")}>{item.text}</div>
-            <div className={nameclassdate.join(" ")}>{item.date}</div>
+            <div
+              className={
+                item.check
+                  ? "output-item__info text checked"
+                  : "output-item__info text"
+              }
+            >
+              {item.text}
+            </div>
+            <div
+              className={
+                item.check
+                  ? "output-item__info date checked"
+                  : "output-item__info date"
+              }
+            >
+              {item.date}
+            </div>
             <div
               className="output-item__info close"
               onClick={event => this.props.deleteItem(event, item.id)}
