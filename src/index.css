@@ -77,7 +77,7 @@ code {
 .output-item__title,
 .output-item__info {
   flex-grow: 1;
-  padding-left: 10px;
+  padding-left: 0px;
   width: 1px;
   height: auto;
   margin: 0px;
@@ -101,6 +101,7 @@ code {
 
 .text {
   flex-grow: 10;
+  padding-left: 10px;
   text-align: left;
 }
 
@@ -113,14 +114,19 @@ code {
   margin-top: -400px;
 }
 
-.output-item.checked .text {
+.date.checked {
   background: #acf151;
   color: #333;
   text-decoration: line-through;
 }
 
-.output-item.checked .date {
+.text.checked {
   background: #acf151;
   color: #333;
   text-decoration: line-through;
+}
+
+.close:hover {
+  background: #acf151;
+  color: #333;
 }
