@@ -54,7 +54,7 @@ class MainForm extends React.Component {
     }));
   };
 
-  SortField = (event) => {
+  sortField = (event) => {
     switch (event.target.id) {
       case 'button-increase__text':
         this.setState({
@@ -97,7 +97,7 @@ class MainForm extends React.Component {
           <Input id="date" type="date" onChange={this.onChange} />
           <Button button="Добавить" listChange={this.listChange} />
         </div>
-        <Sort SortField={this.SortField} />
+        <Sort sortField={this.SortField} />
         <OutputItems
           lists={this.state.list}
           deleteItem={this.deleteItem}

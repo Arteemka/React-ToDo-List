@@ -9,18 +9,18 @@ class Sort extends React.Component {
                 <SortField
                     nameButton="по возрастанию текста"
                     id="button-increase__text"
-                    SortField={this.props.SortField} />
+                    sortField={this.props.SortField} />
                 <SortField
                     nameButton="по убыванию текста"
                     id="button-decrease__text"
-                    SortField={this.props.SortField} />
+                    sortField={this.props.SortField} />
                 <SortField nameButton="по возрастанию даты"
                     id="button-increase__date"
-                    SortField={this.props.SortField} />
+                    sortField={this.props.SortField} />
                 <SortField
                     nameButton="по убыванию даты"
                     id="button-decrease__date"
-                    SortField={this.props.SortField} />
+                    sortField={this.props.SortField} />
             </>
         );
     }
