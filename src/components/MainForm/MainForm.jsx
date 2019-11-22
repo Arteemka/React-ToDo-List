@@ -4,6 +4,7 @@ import uuid from "uuid";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import OutputItems from "../OutputItemOnPage/Output";
+import Sort from "../Sort/Sort";
 
 class MainForm extends React.Component {
   state = { text: "", date: "", list: [] };
@@ -53,6 +54,40 @@ class MainForm extends React.Component {
     }));
   };
 
+  sortField = (event) => {
+    switch (event.target.id) {
+      case 'button-increase__text':
+        this.setState({
+          list: this.state.list.sort((a, b) => {
+            return (a.text.toLowerCase() < b.text.toLowerCase()) ? -1 : 1;
+          })
+        })
+        break;
+      case 'button-decrease__text':
+        this.setState({
+          list: this.state.list.sort((a, b) => {
+            return (a.text.toLowerCase() > b.text.toLowerCase()) ? -1 : 1;
+          })
+        })
+        break;
+      case 'button-increase__date':
+        this.setState({
+          list: this.state.list.sort((a, b) => {
+            return new Date(a.date) - new Date(b.date);
+          })
+        })
+        break;
+      case 'button-decrease__date':
+        this.setState({
+          list: this.state.list.sort((a, b) => {
+            return new Date(b.date) - new Date(a.date);
+          })
+        })
+        break;
+      default: console.log('error'); break;
+    }
+  }
+
   render() {
     return (
       <>
@@ -62,6 +97,7 @@ class MainForm extends React.Component {
           <Input id="date" type="date" onChange={this.onChange} />
           <Button button="Добавить" listChange={this.listChange} />
         </div>
+        <Sort sortField={this.sortField} />
         <OutputItems
           lists={this.state.list}
           deleteItem={this.deleteItem}
