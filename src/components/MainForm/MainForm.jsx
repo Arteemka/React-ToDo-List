@@ -4,6 +4,7 @@ import uuid from "uuid";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 import OutputItems from "../OutputItemOnPage/Output";
+import SortField from "../SortField/SortField";
 
 class MainForm extends React.Component {
   state = { text: "", date: "", list: [] };
@@ -53,6 +54,40 @@ class MainForm extends React.Component {
     }));
   };
 
+  SortField = (event) => {
+    switch (event.target.id) {
+      case 'button-increase__text':
+        this.setState({
+          list: this.state.list.sort((a, b) => {
+            return (a.text.toLowerCase() < b.text.toLowerCase()) ? -1 : 1;
+          })
+        })
+        break;
+      case 'button-decrease__text':
+        this.setState({
+          list: this.state.list.sort((a, b) => {
+            return (a.text.toLowerCase() > b.text.toLowerCase()) ? -1 : 1;
+          })
+        })
+        break;
+      case 'button-increase__date':
+        this.setState({
+          list: this.state.list.sort((a, b) => {
+            return new Date(a.date) - new Date(b.date);
+          })
+        })
+        break;
+      case 'button-decrease__date':
+        this.setState({
+          list: this.state.list.sort((a, b) => {
+            return new Date(b.date) - new Date(a.date);
+          })
+        })
+        break;
+      default: console.log('error'); break;
+    }
+  }
+
   render() {
     return (
       <>
@@ -62,6 +97,10 @@ class MainForm extends React.Component {
           <Input id="date" type="date" onChange={this.onChange} />
           <Button button="Добавить" listChange={this.listChange} />
         </div>
+        <SortField nameButton="по возрастанию текста" id="button-increase__text" SortField={this.SortField} />
+        <SortField nameButton="по убыванию текста" id="button-decrease__text" SortField={this.SortField} />
+        <SortField nameButton="по возрастанию даты" id="button-increase__date" SortField={this.SortField} />
+        <SortField nameButton="по убыванию даты" id="button-decrease__date" SortField={this.SortField} />
         <OutputItems
           lists={this.state.list}
           deleteItem={this.deleteItem}
