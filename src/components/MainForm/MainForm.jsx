@@ -97,7 +97,7 @@ class MainForm extends React.Component {
           <Input id="date" type="date" onChange={this.onChange} />
           <Button button="Добавить" listChange={this.listChange} />
         </div>
-        <Sort sortField={this.SortField} />
+        <Sort sortField={this.sortField} />
         <OutputItems
           lists={this.state.list}
           deleteItem={this.deleteItem}
