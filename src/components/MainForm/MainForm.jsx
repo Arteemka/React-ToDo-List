@@ -97,7 +97,6 @@ class MainForm extends React.Component {
         });
         break;
       default:
-        console.log("error");
         break;
     }
   };
