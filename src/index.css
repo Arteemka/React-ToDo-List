@@ -22,7 +22,7 @@ code {
     background-color: #333;
     height: 200px;
     width: 200px;
-    margin: 0px 0px 0px 10px;
+    margin: 175px 0px 0px 10px;
 }
 
 .label-text {
@@ -178,3 +178,45 @@ code {
     border: none;
     font-size: 17px;
 }
+
+.filter-title {
+    background-color: #333;
+    width: 680px;
+    margin-left: 350px;
+    padding: 10px;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#textFilter {
+    margin-left: 350px;
+    border: none;
+    border-bottom: 2px solid #1b9e48;
+    padding: 5px 10px 5px 10px;
+    font-family: "Times New Roman", Georgia, Serif;
+    margin-top: 0px;
+    width: 330px;
+    font-size: 20px;
+}
+
+#dateFilter {
+    position: absolute;
+    margin-left: 0px;
+    border: none;
+    border-bottom: 2px solid #1b9e48;
+    padding: 5px 10px 5px 10px;
+    font-family: "Times New Roman", Georgia, Serif;
+    margin-top: 0px;
+    width: 330px;
+    font-size: 20px;
+}
+
+::-webkit-input-placeholder {
+    font-family: Arial;
+    font-size: 17px;
+    vertical-align: middle;
+}
+
+

@@ -5,9 +5,18 @@ import Input from "../Input/Input";
 import Button from "../Button/Button";
 import OutputItems from "../OutputItemOnPage/Output";
 import Sort from "../Sort/Sort";
+import Filter from "../Filter/Filter";
+
 
 class MainForm extends React.Component {
-  state = { text: "", date: "", list: [] };
+  state = {
+    text: "",
+    date: "",
+    list: [],
+    filteredList: [],
+    textFilter: "",
+    dateFilter: ""
+  };
 
   onChange = event => {
     const { id, value } = event.target;
@@ -31,6 +40,10 @@ class MainForm extends React.Component {
         date: ""
       };
     });
+
+    this.setState(state => ({
+      filteredList: state.list
+    }));
   };
 
   deleteItem = (event, id) => {
@@ -71,6 +84,7 @@ class MainForm extends React.Component {
         })
         break;
       case 'button-increase__date':
+
         this.setState({
           list: this.state.list.sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
@@ -82,21 +96,55 @@ class MainForm extends React.Component {
           list: this.state.list.sort((a, b) => {
             return new Date(b.date) - new Date(a.date);
           })
-        })
+        });
         break;
-      default: console.log('error'); break;
+      default:
+        break;
     }
-  }
+  };
+
+  filterChange = event => {
+    const { id, value } = event.target;
+
+    this.setState(
+      {
+        [id]: value
+      },
+      () => this.filterList(id)
+    );
+  };
+
+  filterList = id => {
+    if (id === "textFilter") {
+      this.setState(state => ({
+        list: state.filteredList.filter(
+          item => item.text.indexOf(this.state.textFilter) !== -1
+        )
+      }));
+    } else {
+      this.setState(state => ({
+        list: state.filteredList.filter(
+          item => item.date.indexOf(this.state.dateFilter) !== -1
+        )
+      }));
+    }
+  };
 
   render() {
     return (
       <>
         <div className="backGround-font">
           <label className="label-text">Добавьте задачу</label>
-          <Input id="text" type="text" onChange={this.onChange} />
+          <Input
+            placeholder="Текст"
+            id="text"
+            type="text"
+            onChange={this.onChange}
+          />
           <Input id="date" type="date" onChange={this.onChange} />
           <Button button="Добавить" listChange={this.listChange} />
         </div>
+        <Filter filterList={this.filterChange} title="Фильтрация" />
         <Sort sortField={this.sortField} />
         <OutputItems
           lists={this.state.list}
