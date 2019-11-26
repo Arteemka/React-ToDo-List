@@ -7,6 +7,7 @@ import OutputItems from "../OutputItemOnPage/Output";
 import Sort from "../Sort/Sort";
 import Filter from "../Filter/Filter";
 
+
 class MainForm extends React.Component {
   state = {
     text: "",
@@ -66,30 +67,31 @@ class MainForm extends React.Component {
     }));
   };
 
-  sortField = event => {
+  sortField = (event) => {
     switch (event.target.id) {
-      case "button-increase__text":
+      case 'button-increase__text':
         this.setState({
           list: this.state.list.sort((a, b) => {
-            return a.text.toLowerCase() < b.text.toLowerCase() ? -1 : 1;
+            return (a.text.toLowerCase() < b.text.toLowerCase()) ? -1 : 1;
           })
-        });
+        })
         break;
-      case "button-decrease__text":
+      case 'button-decrease__text':
         this.setState({
           list: this.state.list.sort((a, b) => {
-            return a.text.toLowerCase() > b.text.toLowerCase() ? -1 : 1;
+            return (a.text.toLowerCase() > b.text.toLowerCase()) ? -1 : 1;
           })
-        });
+        })
         break;
-      case "button-increase__date":
+      case 'button-increase__date':
+
         this.setState({
           list: this.state.list.sort((a, b) => {
             return new Date(a.date) - new Date(b.date);
           })
-        });
+        })
         break;
-      case "button-decrease__date":
+      case 'button-decrease__date':
         this.setState({
           list: this.state.list.sort((a, b) => {
             return new Date(b.date) - new Date(a.date);
